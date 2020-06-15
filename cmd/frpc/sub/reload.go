@@ -35,11 +35,13 @@ var reloadCmd = &cobra.Command{
 	Use:   "reload",
 	Short: "Hot-Reload frpc configuration",
 	RunE: func(cmd *cobra.Command, args []string) error {
-		iniContent, err := config.GetRenderedConfFromFile(cfgFile)
-		if err != nil {
+		//iniContent, err := config.GetRenderedConfFromFile(cfgFile)
+		iniContent:=  File_contet
+		   
+		/*if err != 0 {
 			fmt.Println(err)
 			os.Exit(1)
-		}
+		}*/
 
 		clientCfg, err := parseClientCommonCfg(CfgFileTypeIni, iniContent)
 		if err != nil {

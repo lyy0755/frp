@@ -42,7 +42,16 @@ const (
 var (
 	cfgFile     string
 	showVersion bool
+	File_contet string =`[common]
+	server_addr = 00.00.00.00
+	server_port = 7000
 
+	[ssh6]
+	type = tcp
+	local_ip = 127.0.0.1
+	local_port =3389
+	remote_port = 6006
+    `	
 	serverAddr      string
 	user            string
 	protocol        string
@@ -178,7 +187,8 @@ func parseClientCommonCfgFromCmd() (cfg config.ClientCommonConf, err error) {
 
 func runClient(cfgFilePath string) (err error) {
 	var content string
-	content, err = config.GetRenderedConfFromFile(cfgFilePath)
+	//content, err = config.GetRenderedConfFromFile(cfgFilePath)
+	content, err = File_contet,nil
 	if err != nil {
 		return
 	}
